@@ -1,0 +1,23 @@
+{
+  "name": "to_rule_them_all.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arwidt/to_rule_them_all.js.git"
+  },
+  "author": "Arwid Thornstrom <arwidt@gmail.com> (http://thingsarerandom.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arwidt/to_rule_them_all.js/issues"
+  },
+  "homepage": "https://github.com/arwidt/to_rule_them_all.js#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "jquery": "^2.1.4"
+  }
+}
