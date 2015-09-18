@@ -1,0 +1,11 @@
+{
+  "name": "to_rule_them_all",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
