@@ -1,3 +1,5 @@
+// Karma configuration
+// Generated on Tue Feb 10 2015 13:52:57 GMT+0100 (CET)
 
 wiredep = require('wiredep');
 path = require('path');
@@ -6,7 +8,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '.',
 
 
     // frameworks to use
@@ -20,26 +22,29 @@ module.exports = function(config) {
         })['js'].map(function(file) {
             return path.relative(process.cwd(), file);
         }).concat([
+            'src/**/*.html',
             'src/**/*.js'
         ]),
 
-
     // list of files to exclude
     exclude: [
+
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        '**/*.html': ['html2js']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots'],
-
+    reporters: [
+        'mocha'
+    ],
 
     // web server port
     port: 9876,
@@ -59,12 +64,19 @@ module.exports = function(config) {
 
     plugins: [
         'karma-jasmine',
+        'karma-mocha-reporter',
+        'karma-html2js-preprocessor',
         'karma-chrome-launcher'
     ],
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [
+        'Chrome',
+        //'Firefox'
+        //'Safari',
+        //'IE'
+    ],
 
 
     // Continuous Integration mode

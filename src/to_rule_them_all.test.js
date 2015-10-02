@@ -2,21 +2,21 @@
 
 describe('to_rule_them_all', function() {
 
-    describe('running a test to testing', function() {
+    describe('setup environment', function() {
 
-        it('should not fail a trivial test', function() {
+        it('should have jquery defined', function() {
             expect($).toBeDefined();
         });
 
-        it('should have a rule function', function() {
-            expect($().rule()).toBeDefined();
+        it('should be able to fetch a div class.', function() {
+            $('body').html("<div class='test' />");
+            expect($('.test').length).toBe(1);
         });
 
-        it('should have a test function', function() {
-            expect($().rule().test("asdf")).toBe($('.test'));
+        it('rule function should return true', function() {
+            var test = $('.test');
+            expect(test.rule()).toBe(test);
         });
-
-
-
+        
     });
 });

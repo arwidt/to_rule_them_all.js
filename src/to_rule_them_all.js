@@ -2,15 +2,18 @@
 
 (function ( $ ) {
 
-    $.fn.rule = function() {
-        var cli = (function() {
-            return {
-                test: function(value) {
-                    return $('.test');
-                }
-            }
-        })();
-        return cli;
+    $.fn.rule = function(opts) {
+
+        // OPTS PARAMS
+        // offsetX: number
+        // offsetY: number
+        // type: vertical | horizontal
+        // color: number
+        // alpha: number 0-1
+        // follow: true | false
+        
+
+        return this;
     };
 
 }( jQuery ));
