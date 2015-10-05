@@ -1,9 +1,17 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
+var livereload = require('gulp-livereload');
+var watch = require('gulp-watch');
 
 gulp.task('watch', function() {
+
+    livereload({start: true});
+
     connect.server({
-        root: 'src/',
-		port: 3000,
-		livereload: true});
+        root: 'src/'
+    });
+
+    watch(['src/**/*.js', 'src/**/*.html'], function () {
+        livereload.reload();
+    });
 });

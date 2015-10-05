@@ -17,6 +17,8 @@ describe('to_rule_them_all', function() {
             var test = $('.test');
             expect(test.rule()).toBe(test);
         });
+
         
+
     });
 });
