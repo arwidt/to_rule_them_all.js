@@ -15,9 +15,9 @@
             fpos = _following_rulers[i]._follower.position();
             if (item.type == "vertical") {
                 // console.log(item._follower);
-                item._instance.css('left', fpos.left);
+                item._instance.css('left', fpos.left + item.offsetX);
             } else {
-                item._instance.css('top', fpos.top);
+                item._instance.css('top', fpos.top + item.offsetY);
             }
         }
     });
@@ -54,18 +54,20 @@
             id: Math.round(Math.random()*99999999),
             color: 'cyan',
             type: 'vertical',
-            offsetX: '50%',
-            offsetY: '0',
+            offsetX: 0,
+            offsetXType: 'px',
+            offsetY: 0,
+            offsetYType: 'px',
             alpha: 1,
             follow: true,
             _instance: ruler,
             _follower: $(this)};
 
-        $.extend(ro, opts);
-
+        ro = $.extend(ro, opts);
 
         ruler.attr('id', ro.id);
         ruler.css('background-color', ro.color);
+        ruler.css('opacity', ro.alpha);
         ruler.css('position', 'absolute');
 
         if (ro.type == 'horizontal') {

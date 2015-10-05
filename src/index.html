@@ -19,8 +19,8 @@
                 height: 200px;
                 display: block;
                 position: absolute;
-                left: 100px;
-                top: 100px;
+                left: 20%;
+                top: 20%;
             }
 
         </style>
@@ -33,16 +33,63 @@
 
             $('.test').rule({
                 type: 'vertical',
-                offsetX: '0',
+                offsetX: 0,
+                offsetXType: 'px',
+                follow: true
+            });
+
+            $('.test').rule({
+                type: 'vertical',
+                offsetX: 50,
+                offsetXType: 'px',
+                color: 'yellow',
                 follow: true
             });
 
             $('.test').rule({
                 type: 'horizontal',
-                offsetY: '0',
+                offsetY: 0,
+                offsetXType: 'px',
                 follow: true
             });
 
+            $('.test').rule({
+                type: 'horizontal',
+                offsetY: 50,
+                offsetXType: 'px',
+                color: 'yellow',
+                follow: true
+            });
+
+            var vert = {
+                type: 'vertical',
+                offsetX: -50,
+                offsetXType: 'px',
+                color: 'blue',
+                alpha: 0.01,
+                follow: true
+            };
+
+            var hori = {
+                type: 'horizontal',
+                offsetY: -50,
+                offsetXType: 'px',
+                color: 'blue',
+                alpha: 0.01,
+                follow: true
+            };
+
+            for (var i = 0; i < 100; i++) {
+
+                vert.offsetX += 3;
+                vert.alpha += 0.01;
+
+                hori.offsetY += 3;
+                hori.alpha += 0.01;
+
+                $('.test').rule(vert);
+                $('.test').rule(hori);
+            }
         </script>
     </body>
 </html>
