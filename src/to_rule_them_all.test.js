@@ -18,7 +18,5 @@ describe('to_rule_them_all', function() {
             expect(test.rule()).toBe(test);
         });
 
-        
-
     });
 });

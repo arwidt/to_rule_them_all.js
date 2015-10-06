@@ -1,8 +1,8 @@
 {
-  "name": "to_rule_them_all.js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "to_rule_them_all",
+  "version": "0.0.1",
+  "description": "Jquery plugin that sets rulers on dom elements and make them follow. Good for gridbased designs like bootstrap.",
+  "main": "./dist/to_rule_them_all.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/arwidt/to_rule_them_all.js.git"
   },
-  "author": "Arwid Thornstrom <arwidt@gmail.com> (http://thingsarerandom.com/)",
+  "keywords": [
+      "jquery",
+      "rulers",
+      "rule"
+  ],
+  "author": "Arwid Thornstrom <arwidt@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/arwidt/to_rule_them_all.js/issues"
@@ -18,8 +23,11 @@
   "homepage": "https://github.com/arwidt/to_rule_them_all.js#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
+    "gulp-jshint": "^1.11.2",
     "gulp-livereload": "^3.8.1",
+    "gulp-uglify": "^1.4.1",
     "gulp-watch": "^4.3.5",
     "html2js": "^0.2.0",
     "jasmine-core": "^2.2.0",

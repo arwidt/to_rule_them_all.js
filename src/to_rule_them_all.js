@@ -14,7 +14,6 @@
             item = _following_rulers[i];
             fpos = _following_rulers[i]._follower.position();
             if (item.type == "vertical") {
-                // console.log(item._follower);
                 item._instance.css('left', fpos.left + item.offsetX);
             } else {
                 item._instance.css('top', fpos.top + item.offsetY);
@@ -35,8 +34,6 @@
         // color: number
         // alpha: number 0-1
         // follow: true | false
-
-        console.log(opts);
 
         if (!_rulers_container) {
             _rulers_container = $('<div />');

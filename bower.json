@@ -1,11 +1,23 @@
 {
   "name": "to_rule_them_all",
-  "description": "",
-  "version": "0.0.0",
-  "homepage": "",
+  "description": "Jquery plugin that sets rulers on dom elements and make them follow. Good for gridbased designs like bootstrap.",
+  "version": "0.0.1",
+  "homepage": "git://github.com/arwidt/to_rule_them_all.js",
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "jquery": "~2.1.4"
-  }
+  },
+  "authors": [
+    "Arwid Thornstrom <arwidt@gmail.com>"
+  ],
+  "main": "./dist/to_rule_them_all.min.js",
+  "keywords": [
+    "jquery",
+    "rulers"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
 }
