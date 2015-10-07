@@ -5,7 +5,7 @@
         <title></title>
 
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="../dist/to_rule_them_all.min.js"></script>
+        <script src="to_rule_them_all.min.js"></script>
 
         <style>
             body {
@@ -53,7 +53,7 @@
                 follow: true
             });
 
-            $('.test').rule({
+            var ro = $('.test').rule({
                 type: 'horizontal',
                 offsetY: 50,
                 offsetXType: 'px',
@@ -61,35 +61,41 @@
                 follow: true
             });
 
-            var vert = {
-                type: 'vertical',
-                offsetX: -50,
-                offsetXType: 'px',
-                color: 'blue',
-                alpha: 0.01,
-                follow: true
-            };
+            console.log(ro);
 
-            var hori = {
-                type: 'horizontal',
-                offsetY: -50,
-                offsetXType: 'px',
-                color: 'blue',
-                alpha: 0.01,
-                follow: true
-            };
+            $().unrule(ro.id);
 
-            for (var i = 0; i < 100; i++) {
 
-                vert.offsetX += 3;
-                vert.alpha += 0.01;
 
-                hori.offsetY += 3;
-                hori.alpha += 0.01;
+            // var vert = {
+            //     type: 'vertical',
+            //     offsetX: -50,
+            //     offsetXType: 'px',
+            //     color: 'blue',
+            //     alpha: 0.01,
+            //     follow: true
+            // };
+            //
+            // var hori = {
+            //     type: 'horizontal',
+            //     offsetY: -50,
+            //     offsetXType: 'px',
+            //     color: 'blue',
+            //     alpha: 0.01,
+            //     follow: true
+            // };
 
-                $('.test').rule(vert);
-                $('.test').rule(hori);
-            }
+            // for (var i = 0; i < 100; i++) {
+            //
+            //     vert.offsetX += 3;
+            //     vert.alpha += 0.01;
+            //
+            //     hori.offsetY += 3;
+            //     hori.alpha += 0.01;
+            //
+            //     $('.test').rule(vert);
+            //     $('.test').rule(hori);
+            // }
         </script>
     </body>
 </html>

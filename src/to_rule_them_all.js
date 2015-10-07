@@ -1,12 +1,13 @@
 
 
-(function ( $ ) {
+(function($, window, document, undefined) {
+    var $window = $(window);
 
     var _rulers_container = null;
     var _rulers = [];
     var _following_rulers = [];
 
-    $(window).resize(function() {
+    $window.resize(function() {
         var item,
             fpos;
 
@@ -21,9 +22,33 @@
         }
     });
 
+    var removeRuler = function(ro) {
+        $('#' + ro.id).remove();
+    };
+
+    $.fn.unrule = function(id) {
+        var obj;
+        for (var i = 0; i < _rulers.length; i++) {
+            if (_rulers[i].id == id) {
+                obj = _rulers.splice(i, 1)[0];
+                removeRuler(obj);
+                break;
+            }
+        }
+        for (var i = 0; i < _following_rulers.length; i++) {
+            if (_following_rulers[i].id == id) {
+                obj = _following_rulers.splice(i, 1)[0];
+                removeRuler(obj);
+                break;
+            }
+        }
+    };
+
     $.fn.rule = function(opts) {
 
         // OPTS PARAMS
+
+        // id
 
         // offsetX: number
         // offsetXType: '%' | 'px'
@@ -48,6 +73,7 @@
         var ruler = $('<div class="ruler" />');
 
         var ro = {
+            hash: Math.round(Math.random()*99999999),
             id: Math.round(Math.random()*99999999),
             color: 'cyan',
             type: 'vertical',
@@ -90,7 +116,7 @@
 
         $(window).trigger('resize');
 
-        return this;
+        return ro;
     };
 
-}( jQuery ));
+})(jQuery, window, document);

@@ -1,6 +1,6 @@
 {
   "name": "to_rule_them_all",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Jquery plugin that sets rulers on dom elements and make them follow. Good for gridbased designs like bootstrap.",
   "main": "./dist/to_rule_them_all.min.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "karma-safari-launcher": "^0.1.1",
     "mocha": "^2.2.1",
     "path": "^0.12.7",
+    "run-sequence": "^1.1.4",
     "wiredep": "^2.2.2"
   }
 }

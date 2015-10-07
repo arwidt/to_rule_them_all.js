@@ -5,8 +5,17 @@ var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var jshint = require("gulp-jshint");
 var concat = require('gulp-concat');
+var rs = require('run-sequence');
 
-gulp.task('watch', function() {
+gulp.task('dev', function() {
+    gulp.src('src/to_rule_them_all.js')
+        .pipe(jshint())
+        .pipe(uglify())
+		.pipe(concat('to_rule_them_all.min.js'))
+		.pipe(gulp.dest('./src/'));
+});
+
+gulp.task('default', function() {
 
     livereload({start: true});
 
@@ -14,12 +23,12 @@ gulp.task('watch', function() {
         root: 'src/'
     });
 
-    watch(['src/**/*.js', 'src/**/*.html'], function () {
-        livereload.reload();
+    watch(['!src/**/*.min.js', 'src/**/*.js', 'src/**/*.html'], function () {
+        rs('dev', livereload.reload);
     });
 });
 
-gulp.task('pack', function() {
+gulp.task('dist', function() {
     gulp.src('src/to_rule_them_all.js')
         .pipe(jshint())
         .pipe(uglify())
