@@ -14,7 +14,7 @@
             }
 
             .test {
-                background-color: red;
+                background-color: grey;
                 width: 200px;
                 height: 200px;
                 display: block;
@@ -31,41 +31,57 @@
 
         <script>
 
-            $('.test').rule({
-                type: 'vertical',
-                offsetX: 0,
-                offsetXType: 'px',
-                follow: true
-            });
+            $('.test').rule();
+            $('.test').rule({type: 'horizontal'});
 
             $('.test').rule({
-                type: 'vertical',
-                offsetX: 50,
-                offsetXType: 'px',
-                color: 'yellow',
-                follow: true
+                offsetX: "33%",
+                color: 'blue'
             });
 
             $('.test').rule({
-                type: 'horizontal',
-                offsetY: 0,
-                offsetXType: 'px',
-                follow: true
+                offsetX: "66%",
+                color: 'blue'
             });
 
-            var ro = $('.test').rule({
-                type: 'horizontal',
-                offsetY: 50,
-                offsetXType: 'px',
-                color: 'yellow',
-                follow: true
+            $('.test').rule({
+                offsetY: "33%",
+                color: 'yellow'
             });
 
-            console.log(ro);
+            $('.test').rule({
+                offsetY: "66%",
+                color: 'yellow'
+            });
 
-            $().unrule(ro.id);
+            // $('.test').rule({
+            //     offsetX: "50px",
+            //     color: 'blue'
+            // });
+            //
+            // $('.test').rule({
+            //     type: 'vertical',
+            //     offsetX: "50%",
+            //     color: 'blue'
+            // });
 
+            // $('.test').rule({
+            //     type: 'horizontal',
+            //     offsetY: 0,
+            //     offsetXType: 'px',
+            //     follow: true
+            // });
+            //
+            // var ro = $('.test').rule({
+            //     type: 'horizontal',
+            //     offsetY: 50,
+            //     offsetXType: 'px',
+            //     color: 'yellow',
+            //     follow: true
+            // });
 
+            // console.log(ro);
+            // $().unrule(ro.id);
 
             // var vert = {
             //     type: 'vertical',

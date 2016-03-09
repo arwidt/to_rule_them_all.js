@@ -1,6 +1,6 @@
 
 
-(function($, window, document, undefined) {
+;(function($, window, document, undefined) {
     var $window = $(window);
 
     var _rulers_container = null;
@@ -9,15 +9,29 @@
 
     $window.resize(function() {
         var item,
-            fpos;
+            fpos,
+            fwidth,
+            fheight;
 
         for (var i = 0; i < _following_rulers.length; i++) {
             item = _following_rulers[i];
-            fpos = _following_rulers[i]._follower.position();
+            fpos = _following_rulers[i]._following.position();
+
+            fwidth = _following_rulers[i]._following.width();
+            fheight = _following_rulers[i]._following.height();
+
             if (item.type == "vertical") {
-                item._instance.css('left', fpos.left + item.offsetX);
+                if (item.offsetXType === "%") {
+                    item._instance.css('left', fpos.left + utils.calcPercentOf(item.offsetX, fwidth));
+                } else {
+                    item._instance.css('left', fpos.left + item.offsetX);
+                }
             } else {
-                item._instance.css('top', fpos.top + item.offsetY);
+                if (item.offsetYType === "%") {
+                    item._instance.css('top', fpos.top + utils.calcPercentOf(item.offsetY, fheight));
+                } else {
+                    item._instance.css('top', fpos.top + item.offsetY);
+                }
             }
         }
     });
@@ -25,6 +39,37 @@
     var removeRuler = function(ro) {
         $('#' + ro.id).remove();
     };
+
+    var utils = (function() {
+        var _inst = {};
+
+        _inst.getType = function(val) {
+            if (typeof val === "number") {
+                // return val + "px";
+                return "px";
+            } else if (typeof val === "string") {
+                if (val.substr(val.length-1, 1) === "%") {
+                    // return val;
+                    return "%";
+                } else if (val.substr(val.length-2, 2) === "px") {
+                    // return val;
+                    return "px";
+                }
+            } else {
+                // return "0";
+                return null;
+            }
+        };
+
+        _inst.calcPercentOf = function(perc, value) {
+            if (perc.substr(perc.length-1, 1) !== "%") return null;
+            return +perc.substr(0, perc.length-1)/100*value;
+        };
+
+        return _inst;
+    })();
+
+    window.utils = utils;
 
     $.fn.unrule = function(id) {
         var obj;
@@ -60,6 +105,13 @@
         // alpha: number 0-1
         // follow: true | false
 
+        // console.log(utils);
+
+        if (opts) {
+            // console.log(opts);
+            // console.log(utils.getType(opts.offsetX));
+        }
+
         if (!_rulers_container) {
             _rulers_container = $('<div />');
             _rulers_container.addClass('rulers');
@@ -78,15 +130,23 @@
             color: 'cyan',
             type: 'vertical',
             offsetX: 0,
-            offsetXType: 'px',
+            offsetXType: "px",
             offsetY: 0,
-            offsetYType: 'px',
+            offsetYType: "px",
             alpha: 1,
             follow: true,
             _instance: ruler,
-            _follower: $(this)};
+            _following: $(this)
+        };
 
         ro = $.extend(ro, opts);
+
+        ro.offsetXType = utils.getType(ro.offsetX);
+        ro.offsetYType = utils.getType(ro.offsetY);
+
+        if (ro.offsetY !== 0) {
+            ro.type = 'horizontal';
+        }
 
         ruler.attr('id', ro.id);
         ruler.css('background-color', ro.color);

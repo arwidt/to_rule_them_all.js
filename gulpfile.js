@@ -26,6 +26,7 @@ gulp.task('default', function() {
     watch(['!src/**/*.min.js', 'src/**/*.js', 'src/**/*.html'], function () {
         rs('dev', livereload.reload);
     });
+
 });
 
 gulp.task('dist', function() {
